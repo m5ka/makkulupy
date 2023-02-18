@@ -1,0 +1,21 @@
+[build-system]
+requires = ["flit_core >=3.8.0,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "makkulupy"
+description = "a lightweight consumer for the makkulu dictionary api"
+authors = [{name = "marzka", email = "git@marzka.cafe"}]
+readme = "README.md"
+dynamic = ["version", "description"]
+requires-python = ">= 3.8"
+dependencies = ["requests >= 2.28, < 2.29", "orjson >= 3.8.6, < 3.9"]
+classifiers = [
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3"
+]
+
+[project.urls]
+Home = "https://github.com/marzusia/makkulupy"
+"Bug Tracker" = "https://github.com/marzusia/makkulupy/issues"
