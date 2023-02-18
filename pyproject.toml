@@ -7,7 +7,7 @@ name = "makkulupy"
 description = "a lightweight consumer for the makkulu dictionary api"
 authors = [{name = "marzka", email = "git@marzka.cafe"}]
 readme = "README.md"
-dynamic = ["version", "description"]
+dynamic = ["version"]
 requires-python = ">= 3.8"
 dependencies = ["requests >= 2.28, < 2.29", "orjson >= 3.8.6, < 3.9"]
 classifiers = [
