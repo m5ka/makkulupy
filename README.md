@@ -17,4 +17,4 @@ for word in words:
 ```
 
 ## License
-makkulupy is licensed under the **BSD 2 Clause** (see [LICENSE] to read in full)
+makkulupy is licensed under the **BSD 2 Clause** (see [LICENSE](LICENSE) to read in full)
