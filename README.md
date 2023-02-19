@@ -1,6 +1,6 @@
 # makkulupy 💬
 
-![test (ward)](https://img.shields.io/github/actions/workflow/status/marzusia/makkulupy/ward.yaml?branch=develop&event=push)
+![test (ward)](https://img.shields.io/github/actions/workflow/status/marzusia/makkulupy/ward.yaml?branch=main&event=push)
 [![license](https://img.shields.io/github/license/marzusia/makkulupy)](LICENSE)
 [![pypi](https://img.shields.io/pypi/v/makkulupy)](https://pypi.org/project/makkulupy)
 
