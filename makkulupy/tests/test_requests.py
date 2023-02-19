@@ -58,7 +58,7 @@ def _():
         assert results[0].headword == "jan"
         assert results[0].slug == "jan"
         assert results[0].pos == "verb"
-        assert results[0].cls == None
+        assert results[0].cls is None
         assert results[0].definition == "person"
         assert results[0].etymology == "chinese"
         assert results[0].notes == "a good word"
@@ -67,7 +67,7 @@ def _():
         assert type(results[1].id) == int
         assert results[1].id == 2
         assert results[1].headword == "ona"
-        assert results[1].notes == None
+        assert results[1].notes is None
         assert type(results[2]) == Word
         assert type(results[2].id) == int
         assert results[2].id == 3

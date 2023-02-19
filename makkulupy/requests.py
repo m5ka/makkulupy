@@ -14,7 +14,7 @@ def _parse_int(object: Union[int, str, None]) -> Union[int, None]:
     Returns an int if the object is an int or string.
     Otherwise returns None.
     """
-    if object == None:
+    if object is None:
         return None
     if type(object) == int:
         return object
