@@ -11,8 +11,8 @@ from .models.word import Word, WordSet
 
 def _parse_int(object: Union[int, str, None]) -> Union[int, None]:
     """
-    Returns an int if the object is an int or string.
-    Otherwise returns None.
+    Returns an int if the object is an int or string, otherwise returns
+    None.
     """
     if object is None:
         return None
@@ -25,8 +25,8 @@ def _parse_int(object: Union[int, str, None]) -> Union[int, None]:
 
 def _parse_date(object: Union[str, None]) -> Union[datetime, None]:
     """
-    Returns a parsed datetime if the object is a string.
-    Otherwise returns None.
+    Returns a parsed datetime if the object is a string, otherwise returns
+    None.
     """
     if object and type(object) == str:
         return parser.parse(object)
@@ -35,8 +35,8 @@ def _parse_date(object: Union[str, None]) -> Union[datetime, None]:
 
 def _parse_string(object: Union[str, None]) -> Union[str, None]:
     """
-    Returns the given object if it is a non-empty string.
-    Otherwise returns None.
+    Returns the given object if it is a non-empty string, otherwise returns
+    None.
     """
     if object and type(object) == str and len(object):
         return object
@@ -45,8 +45,8 @@ def _parse_string(object: Union[str, None]) -> Union[str, None]:
 
 def _parse_word_set(objects: List[Any]) -> List[Word]:
     """
-    Returns a list of Word objects from a list of
-    dictionaries containing word data.
+    Returns a list of Word objects from a list of dictionaries containing
+    word data.
     """
     if not objects:
         return []
@@ -69,8 +69,8 @@ def _parse_word_set(objects: List[Any]) -> List[Word]:
 
 def _parse_batch_set(objects: List[Any]) -> List[Batch]:
     """
-    Returns a list of Batch objects from a list of
-    dictionaries containing batch data.
+    Returns a list of Batch objects from a list of dictionaries containing
+    batch data.
     """
     if not objects:
         return []
@@ -96,8 +96,31 @@ def _parse_batch_set(objects: List[Any]) -> List[Batch]:
 
 def get_words(**params: Dict[str, Any]) -> WordSet:
     """
-    Returns a WordSet from the makkulu API based on a
-    dictionary of parameters sent to the API.
+    Returns a WordSet from the makkulu API based on a dictionary of
+    parameters sent to the API.
+
+    Args:
+        **kwargs:
+            Optional keyword arguments that act as filters on the request
+            to the makkulu API.
+
+    Returns:
+        A WordSet object containing the result of the API request.
+
+    Raises:
+        BadResponseException:
+            If the server responds with a non-OK response code.
+        MalformedResponseException:
+            If the server response cannot be properly parsed.
+
+    Examples:
+        Fetch the first five Words in the dictionary.
+
+        >>> words = get_words(limit=5)
+
+        Find all words with a headword matching "makkulu".
+
+        >>> words = get_words(headword="makkulu")
     """
     response = requests.get("https://lang.kulupu.li/api/words/", params=params)
     if not response.status_code == 200:
@@ -114,8 +137,31 @@ def get_words(**params: Dict[str, Any]) -> WordSet:
 
 def get_batches(**params: Dict[str, Any]) -> BatchSet:
     """
-    Returns a BatchSet from the makkulu API based on a
-    dictionary of parameters sent to the API.
+    Returns a BatchSet from the makkulu API based on a dictionary of
+    parameters sent to the API.
+
+    Args:
+        **kwargs:
+            Optional keyword arguments that act as filters on the request
+            to the makkulu API.
+
+    Returns:
+        A WordSet object containing the result of the API request.
+
+    Raises:
+        BadResponseException:
+            If the server responds with a non-OK response code.
+        MalformedResponseException:
+            If the server response cannot be properly parsed.
+
+    Examples:
+        Fetch all batches that have not yet passed.
+
+        >>> batches = get_batches(passed=False)
+
+        Find all batches with a name matching "pronouns".
+
+        >>> batches = get_batches(name="pronouns")
     """
     response = requests.get("https://lang.kulupu.li/api/batches/", params=params)
     if not response.status_code == 200:
