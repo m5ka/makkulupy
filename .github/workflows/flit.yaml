@@ -1,0 +1,26 @@
+name: deploy (flit)
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: set up python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+      - name: install packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install flit
+      - name: build package
+        run: flit build
+      - name: deploy package
+        run: flit publish
+        env:
+          FLIT_USERNAME: __token__
+          FLIT_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
