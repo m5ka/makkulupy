@@ -1,18 +1,27 @@
+from typing import List, Union
+from datetime import datetime
+
+from .word import Word
+
+
 class Batch:
     def __init__(
         self,
         *,
-        name=None,
-        description=None,
-        submitted=None,
-        submitted_at=None,
-        discussion_count=None,
-        passed=None,
-        passed_at=None,
-        voting_from=None,
-        voting_hours=None,
-        words=[],
+        id: Union[int, None] = None,
+        name: Union[str, None] = None,
+        description: Union[str, None] = None,
+        submitted: Union[bool, None] = None,
+        submitted_at: Union[datetime, None] = None,
+        discussion_count: Union[int, None] = None,
+        passed: Union[bool, None] = None,
+        passed_at: Union[datetime, None] = None,
+        voting_from: Union[datetime, None] = None,
+        voting_hours: Union[int, None] = None,
+        url: Union[str, None] = None,
+        words: List[Word] = [],
     ):
+        self.id = id
         self.name = name
         self.description = description
         self.submitted = submitted
@@ -22,6 +31,7 @@ class Batch:
         self.passed_at = passed_at
         self.voting_from = voting_from
         self.voting_hours = voting_hours
+        self.url = url
         self.words = words
         self._len_words = len(words)
 
@@ -33,8 +43,8 @@ class BatchSet:
     def __init__(
         self,
         *,
-        count=0,
-        batches=None,
+        count: int = 0,
+        batches: List[Batch] = None,
     ):
         self.count = count
         self.batches = batches
