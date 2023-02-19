@@ -5,6 +5,35 @@ from .word import Word
 
 
 class Batch:
+    """Represents a Batch from the makkulu API.
+
+    Attributes:
+        id: An integer uniquely identifying the Batch.
+        name: The name of the Batch.
+        description: The description of the Batch.
+        submitted:
+            A boolean indicating whether the Batch has been submitted to
+            the oven.
+        submitted_at:
+            A datetime object representing when the Batch was submitted,
+            if ``submitted`` is True.
+        discussion_count:
+            The number of active discussions flagged on the Batch.
+        passed:
+            A boolean indicating whether the Batch has finished baking.
+        passed_at:
+            A datetime object representing when the Batch finished baking,
+            if ``passed`` is True.
+        voting_from:
+            A datetime object representing the time from which the deadline
+            for the Batch passing should be calculated.
+        voting_hours:
+            An integer representing the number of hours the Batch should
+            spend in the oven before finishing baking.
+        url: The URL of the Batch on the makkulu website.
+        words: A list of Word objects that the Batch contains.
+    """
+
     def __init__(
         self,
         *,
@@ -40,6 +69,23 @@ class Batch:
 
 
 class BatchSet:
+    """Represents the result from a call to the makkulu API that contains a
+    list of batches.
+
+    Attributes:
+        count:
+            The full number of results the request found, regardless of how
+            many batches were returned in this BatchSet.
+        batches:
+            A list of Batch objects that were returned from the makkulu API.
+
+    Examples:
+        Check if this BatchSet is only a subset of the results found by the
+        API.
+
+        >>> batch_set.count > len(batch_set)
+    """
+
     def __init__(
         self,
         *,
